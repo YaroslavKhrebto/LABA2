@@ -31,5 +31,11 @@
         <input type="submit" value="Поиск">
     </form>
 
+    <form action="localhost.php">
+        
+        <input type="submit" value="local host">
+    </form>
+
+
 </body>
 </html>

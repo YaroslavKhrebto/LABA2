@@ -20,10 +20,11 @@ $options = [
 ];
 
 $result = $collection->find($filter, $options);
+$res = iterator_to_array($result);
 
 echo "<h1>Список доступных автомобилей марки $car_make:</h1>";
 
-foreach ($result as $document) {
+foreach ($res  as $document) {
   echo "<p>Модель: " . $document['brand'] . "</p>";
   echo "<p>Год выпуска: " . $document['year'] . "</p>";
   echo "<p>Пробег: " . $document['mileage'] . "</p>";
@@ -31,4 +32,13 @@ foreach ($result as $document) {
   echo "<hr>";
 }
 
+
+echo "<script>
+let arr = [];   
+if (localStorage.getItem('brand'))
+    arr = JSON.parse(localStorage.getItem('brand'));    
+    arr.push(" . json_encode($res) . ");
+localStorage.setItem('brand', JSON.stringify(arr));
+</script>
+";
 ?>
